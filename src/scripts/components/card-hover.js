@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 class CardHover extends HTMLElement {
   constructor() {
     super();

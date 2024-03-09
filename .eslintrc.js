@@ -1,29 +1,28 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es2021': true,
+  env: {
+    browser: true,
+    es2021: true,
   },
-  'extends': 'google',
-  'overrides': [
+  extends: 'airbnb-base',
+  overrides: [
     {
-      'env': {
-        'node': true,
+      env: {
+        node: true,
       },
-      'files': [
+      files: [
         '.eslintrc.{js,cjs}',
       ],
-      'parserOptions': {
-        'sourceType': 'script',
+      parserOptions: {
+        sourceType: 'script',
       },
     },
   ],
-  'parserOptions': {
-    'ecmaVersion': 'latest',
-    'sourceType': 'module',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  'rules': {
-    'require-jsdoc': 'off',
+  rules: {
     'max-len': 'off',
-    'object-curly-spacing': 'off',
+    'no-underscore-dangle': 'off',
   },
 };

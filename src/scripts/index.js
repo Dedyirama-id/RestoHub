@@ -1,29 +1,30 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/scss/style.scss';
-import '../scripts/components/card-hover';
-import scrollToElement from '../scripts/utils/scroll-to';
+import './components/card-hover';
+import scrollToElement from './utils/scroll-to';
 
 let restaurantData = [];
 
-const targetElement = document.getElementById('restaurant-list');
+const scrollTargetElement = document.getElementById('restaurant-list');
 const header = document.querySelector('header');
 const menu = document.querySelector('#menu-btn');
 const ctaButton = document.getElementById('cta-button');
 const restaurantList = document.getElementById('restaurant-list');
 const searchForm = document.querySelector('.search-bar');
+const restaurantCardContainer = restaurantList.querySelector('.card-container');
 
-const showRestaurantList = (data) => {
+const showRestaurantList = (restaurants) => {
   restaurantCardContainer.innerHTML = '';
-  data.forEach((restaurant) => {
+  restaurants.forEach((restaurant) => {
     const card = document.createElement('card-hover');
-    card.data = restaurant;
+    card.restaurants = restaurant;
     restaurantCardContainer.appendChild(card);
   });
 };
 
-const filterData = (data, query) => {
+const filterData = (allData, query) => {
   const q = query.toLowerCase();
-  const filteredData = data.filter((d) => d.name.toLowerCase().includes(q) || d.city.toLowerCase().includes(q));
+  const filteredData = allData.filter((data) => data.name.toLowerCase().includes(q) || data.city.toLowerCase().includes(q));
   return filteredData;
 };
 
@@ -31,12 +32,14 @@ menu.addEventListener('click', () => {
   const nav = document.querySelector('nav');
   nav.classList.toggle('open');
   const menuIcon = menu.querySelector('img');
-  (nav.classList.contains('open')) ? menuIcon.src = './icons/xmark.svg' : menuIcon.src = './icons/menu.svg';
+  if (nav.classList.contains('open')) {
+    menuIcon.src = './icons/xmark.svg';
+  } else {
+    menuIcon.src = './icons/menu.svg';
+  }
 });
 
-ctaButton.addEventListener('click', () => scrollToElement(targetElement, header, 16));
-
-const restaurantCardContainer = restaurantList.querySelector('.card-container');
+ctaButton.addEventListener('click', () => scrollToElement(scrollTargetElement, header, 16));
 
 fetch('./data/DATA.json').then((response) => {
   if (!response.ok) {
@@ -48,8 +51,8 @@ fetch('./data/DATA.json').then((response) => {
   showRestaurantList(data.restaurants);
 }).catch((error) => console.error('Fetch error:', error));
 
-searchForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
   const searchValue = searchForm.searchInput.value;
   const filteredData = filterData(restaurantData, searchValue);
   showRestaurantList(filteredData);
