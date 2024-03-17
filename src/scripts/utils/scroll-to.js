@@ -1,4 +1,4 @@
-function scrollToElement(targetElement, offsetElement, offset = 0) {
+function scrollToElement({ targetElement, offsetElement, offset = 0 }) {
   const elementPosition = targetElement.offsetTop - (offsetElement.offsetHeight + offset);
 
   window.scrollTo({

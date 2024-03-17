@@ -24,5 +24,6 @@ module.exports = {
   rules: {
     'max-len': 'off',
     'no-underscore-dangle': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

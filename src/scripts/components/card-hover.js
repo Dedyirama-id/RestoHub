@@ -1,3 +1,5 @@
+import API_ENDPOINT from '../globals/api-endpoint';
+
 /* eslint-disable no-unused-expressions */
 class CardHover extends HTMLElement {
   constructor() {
@@ -20,11 +22,15 @@ class CardHover extends HTMLElement {
   set data(data) {
     this._id = data.id;
     this._name = data.name;
-    this._description = data.shortDescription;
+    this._description = (data.description.length <= 100) ? data.description : `${data.description.slice(0, 100)}...`;
     this._pictureId = data.pictureId;
     this._city = data.city;
     this._rating = data.rating;
     this.render();
+  }
+
+  get id() {
+    return this._id;
   }
 
   render() {
@@ -139,7 +145,7 @@ class CardHover extends HTMLElement {
       </style>
 
       <div id="${this._id}" tabindex="0" aria-label="${this._name}" class="card">
-        <img src="${this._pictureId}" alt="${this._name} image" class="main-img">
+        <img src="${API_ENDPOINT.IMAGE.SMALL(this._pictureId)}" alt="${this._name} image" class="main-img">
         <div class="text-content">
           <h2 class="name">${this._name}</h2>
           <p class="desc">${this._description}</p>
