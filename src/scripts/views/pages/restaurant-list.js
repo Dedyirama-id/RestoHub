@@ -15,7 +15,7 @@ const RestaurantList = {
       <div class="hero-img">
         <div class="start">
           <p>Find a Suitable Restaurant For You!</p>
-          <button id="cta-button"><span>Let's Start</span> <img src="icons/right-arrow.svg"
+          <button id="cta-button"><span>Let's Start</span> <img src="svg/right-arrow.svg"
               alt="Right arrow"></button>
         </div>
         <img src="images/heros/hero-image_4.jpg" alt="Hero image">

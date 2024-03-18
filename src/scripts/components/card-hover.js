@@ -152,7 +152,7 @@ class CardHover extends HTMLElement {
         </div>
         <ul class="tag-container">
           <li class="tag">${this._city}</li>
-          <li class="tag"><img src="icons/star.svg" alt="Star icon" class="star"> ${this._rating}</li>
+          <li class="tag"><img src="svg/star.svg" alt="Star icon" class="star"> ${this._rating}</li>
         </ul>
       </div>
     `;

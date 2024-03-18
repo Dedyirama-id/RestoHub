@@ -26,9 +26,8 @@ class ReviewCard extends HTMLElement {
       <style>
         :host {
           display: block;
-          max-width: 600px;
           min-width: 300px;
-          flex: 1 1 0;
+          width: 100%;
         }
           
         * {
@@ -39,37 +38,41 @@ class ReviewCard extends HTMLElement {
         }
 
         .card {
+          width: 100%;
           border-radius: 8px;
           align-items: center;
-          gap: 16px;
           display: flex;
+          flex-direction: column;
           padding: 8px;
+          gap: 8px;
+          min-width: fit-content;
         }
 
         .card:hover {
-          cursor: pointer;
-          background-color: #f0f0f0 
+          background-color: #f0f0f0;
         }
-        
-        .avatar {
+
+       .avatar {
+          aspect-ratio: 1;
           background-color: black;
-          height: 80px;
-          aspect-ratio: 1/1;
-          border-radius: 800px;
+          border-radius: 50%; 
+          flex-shrink: 0;
         }
-        
+
         .review-content {
-          flex-shrink: 1;
           display: flex;
           flex-direction: column;
-          align-self: stretch;
-          justify-content: sace-between;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
           gap: 6px;
+          height: fit-content;
         }
 
         .review {
-          display: inline-block;
-          flex-grow: 1;
+          flex-shrink: 1;
+          overflow-wrap: break-word;
+          height: fit-content;
         }
         
         h2 {
@@ -82,6 +85,29 @@ class ReviewCard extends HTMLElement {
 
         .date {
           font-size: clamp(0.8rem, 0.25vw + 0.74rem, 0.94rem);
+        }
+
+        @media screen and (min-width: 380px) {
+          .card {
+            flex-direction: row;
+          }
+
+          .avatar {
+            width: 80px;
+            height: 80px;
+          }
+
+          .review-content {
+            align-items: flex-start;
+            justify-content: space-between;
+            text-align: left;
+          }
+        }
+
+        @media screen and (min-width: 768px) {
+          :host {
+            width: calc(50% - 16px);
+          }
         }
       </style>
 

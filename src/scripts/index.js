@@ -3,6 +3,7 @@ import '../styles/scss/style.scss';
 import './components/card-hover';
 import './components/review-card';
 import App from './views/app';
+import swRegister from './utils/sw-register';
 
 const app = new App({
   button: document.querySelector('#menu-btn'),
@@ -16,4 +17,5 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+  swRegister();
 });

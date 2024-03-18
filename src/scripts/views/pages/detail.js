@@ -24,20 +24,18 @@ const Detail = {
     <div id="reviews" class="reviews">
       <div class="heading">
         <div class="heading-text">
-          <h2>Costumer Reviews</h2>
-          <button id="add-review-button">Add Review +</button>
+          <h2>Customer Reviews</h2>
+          <button id="add-review-button"><span>Add Review</span>+</button>
         </div>
         <form id="review-form" class="review-form">
           <label for="name">Name</label>
           <input type="text" name="name" id="name-input" placeholder="John Doe">
           <label for="review">Review</label>
           <input type="text" name="review" id="review-input" placeholder="Your review...">
-          <button type="submit">Submit</button>
+          <button type="submit" id="review-submit-btn" class="submit-btn">Submit</button>
         </form>
       </div>
-      <div class="review-container">
-        <review-card></review-card>
-        <review-card></review-card>
+      <div class="review-container"> 
       </div>
     </div>
     `;
@@ -49,6 +47,18 @@ const Detail = {
     this._renderDetail(restaurant);
     this._renderMenu(restaurant.menus);
     this._renderReviews(restaurant.customerReviews);
+
+    const openFormButton = document.querySelector('#add-review-button');
+    openFormButton.addEventListener('click', () => {
+      const reviewForm = document.querySelector('#review-form');
+      reviewForm.classList.toggle('closed');
+
+      if (reviewForm.classList.contains('closed')) {
+        openFormButton.innerHTML = '<span>Add Review</span> +';
+      } else {
+        openFormButton.innerHTML = '<span>Close</span> - ';
+      }
+    });
 
     const reviewForm = document.querySelector('#review-form');
     reviewForm.addEventListener('submit', (event) => {
@@ -79,24 +89,22 @@ const Detail = {
   _renderDetail(restaurant) {
     const detailContainer = document.querySelector('.detail');
     detailContainer.innerHTML = `
-      <div class="title">
-        <p>${restaurant.name}</p>
+      <p class="title">${restaurant.name}</p>
+      <div class= "image-container">
+        <button class="add-to-favorite"><span>Add to Favorite</span><img src="./svg/heart-regular.svg" alt="Favorite button"></button>
+        <img src="${API_ENDPOINT.IMAGE.LARGE(restaurant.pictureId)}" alt="${restaurant.name} image" class="restaurant-image">
       </div>
-      <div class="main-img">
-        <img src="${API_ENDPOINT.IMAGE.LARGE(restaurant.pictureId)}" alt="${restaurant.name} image">
+      <div class="restaurant-detail">
+        <ul>
+          <li>Address : ${restaurant.address}</li>
+          <li>Category : ${restaurant.categories.map((category) => category.name).join(', ')}</li>
+          <li>City : ${restaurant.city}</li>
+          <li class="rating"><span>Rating :</span>
+          <img src="./svg/star.svg" alt=""> 
+          <span>${restaurant.rating.toFixed(2)}</span> 
+          </li>
+        </ul>
         <p>${restaurant.description}</p>
-        <div class="city-address">
-          <p id="city">${restaurant.city}</p>
-          <hr>
-          <p id="address">${restaurant.address}</p>
-        </div>
-        <div class="tags">
-          <ul id="categories">
-            ${restaurant.categories.map((category) => `<li>${category.name}</li>`).join('')}
-          </ul>
-          <hr>
-          <p class="rating"><img src="./svg/star.svg" alt="star-icon"><span>${restaurant.rating.toFixed(2)}</span></p>
-        </div>
       </div>
     `;
   },
