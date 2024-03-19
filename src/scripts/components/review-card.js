@@ -1,13 +1,9 @@
-/* eslint-disable no-unused-expressions */
 class ReviewCard extends HTMLElement {
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({
       mode: 'open',
     });
-    this._name;
-    this._review;
-    this._date;
   }
 
   connectedCallback() {

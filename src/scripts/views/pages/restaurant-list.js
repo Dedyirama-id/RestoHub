@@ -1,4 +1,5 @@
 import RestaurantApiSource from '../../data/restaurantapi-source';
+import RestaurantsInitiator from '../../utils/restaurants-initiator';
 import scrollToElement from '../../utils/scroll-to';
 
 const RestaurantList = {
@@ -78,38 +79,32 @@ const RestaurantList = {
 
   async afterRender() {
     const ctaButton = document.querySelector('#cta-button');
-    ctaButton.addEventListener('click', () => scrollToElement({
+    ctaButton.addEventListener('click', (event) => this._handleCtaClick(event));
+
+    const restaurants = await RestaurantApiSource.restaurantList();
+    const restaurantsContainer = document.querySelector('#card-container');
+    restaurantsContainer.innerHTML = '';
+    RestaurantsInitiator.init(restaurantsContainer, restaurants);
+
+    const searchRestaurantForm = document.querySelector('#restaurant-list .search-bar');
+    searchRestaurantForm.addEventListener('submit', async (event) => this._handleSearchSubmit(event));
+  },
+
+  _handleCtaClick(event) {
+    event.preventDefault();
+    scrollToElement({
       targetElement: document.querySelector('#restaurant-list'),
       offsetElement: document.querySelector('header'),
       offset: 16,
-    }));
-
-    const restaurants = await RestaurantApiSource.restaurantList();
-    this._showRestaurantList(restaurants);
-
-    const searchRestaurantForm = document.querySelector('#restaurant-list .search-bar');
-    searchRestaurantForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const query = searchRestaurantForm.searchInput.value;
-      const searchedRestaurant = await RestaurantApiSource.searchRestaurant(query);
-      this._showRestaurantList(searchedRestaurant);
     });
   },
 
-  _showRestaurantList(restaurants) {
-    const restaurantCardContainer = document.querySelector('#card-container');
-    restaurantCardContainer.innerHTML = '';
-    restaurants.forEach((restaurant) => {
-      const card = document.createElement('card-hover');
-      card.data = restaurant;
-      restaurantCardContainer.appendChild(card);
-      card.addEventListener('click', (event) => this._handleCardClick(event));
-    });
-  },
-
-  _handleCardClick(event) {
+  async _handleSearchSubmit(event) {
     event.preventDefault();
-    window.location.hash = `/detail/${event.target.id}`;
+    const searchRestaurantForm = document.querySelector('#restaurant-list .search-bar');
+    const query = searchRestaurantForm.searchInput.value;
+    const searchedRestaurant = await RestaurantApiSource.searchRestaurant(query);
+    this._showRestaurantList(searchedRestaurant);
   },
 };
 

@@ -1,11 +1,9 @@
 import FavoriteMovieIdb from '../data/favorite-restaurant-idb';
 
-/* eslint-disable no-unused-expressions */
 class AddToFavoriteBtn extends HTMLElement {
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({ mode: 'open' });
-    this._restaurant;
   }
 
   set restaurant(restaurant) {
@@ -62,8 +60,7 @@ class AddToFavoriteBtn extends HTMLElement {
         }
       </style>
 
-      <button class="add-to-favorite">
-      </button>
+      <button class="add-to-favorite"></button>
     `;
 
     const { id } = this._restaurant;

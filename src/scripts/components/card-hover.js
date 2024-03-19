@@ -1,18 +1,11 @@
 import API_ENDPOINT from '../globals/api-endpoint';
 
-/* eslint-disable no-unused-expressions */
 class CardHover extends HTMLElement {
   constructor() {
     super();
     this._shadowRoot = this.attachShadow({
       mode: 'open',
     });
-    this._id;
-    this._name;
-    this._description;
-    this._pictureId;
-    this._city;
-    this._rating;
   }
 
   connectedCallback() {

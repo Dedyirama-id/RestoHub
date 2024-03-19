@@ -569,7 +569,7 @@ main {
   }
 
   .review-form {
-    display: grid;
+    display: none;
     grid-template-columns: max-content auto;
     gap: 16px;
     align-items: center;
@@ -616,8 +616,8 @@ main {
     }
   }
 
-  .review-form.closed {
-    display: none;
+  .review-form.open {
+    display: grid;
   }
 }
 

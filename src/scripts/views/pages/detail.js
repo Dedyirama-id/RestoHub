@@ -1,6 +1,6 @@
 import RestaurantApiSource from '../../data/restaurantapi-source';
-import API_ENDPOINT from '../../globals/api-endpoint';
 import UrlParser from '../../routes/url-parser';
+import createRestaurantDetailTemplate from '../templates/template-creator';
 
 const Detail = {
   async render() {
@@ -42,10 +42,17 @@ const Detail = {
   },
 
   async afterRender() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
     const restaurantId = UrlParser.parseActiveUrlWithoutCombiner().id;
     const restaurant = await RestaurantApiSource.detailRestaurant(restaurantId);
-    this._renderDetail(restaurant);
-    this._renderMenu(restaurant.menus);
+    const detailContainer = document.querySelector('.detail');
+    detailContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+
+    this._renderMenus(restaurant.menus);
     this._renderReviews(restaurant.customerReviews);
 
     const addToFavoriteButton = document.querySelector('add-to-favorite-button');
@@ -54,13 +61,8 @@ const Detail = {
     const openFormButton = document.querySelector('#add-review-button');
     openFormButton.addEventListener('click', () => {
       const reviewForm = document.querySelector('#review-form');
-      reviewForm.classList.toggle('closed');
-
-      if (reviewForm.classList.contains('closed')) {
-        openFormButton.innerHTML = '<span>Add Review</span> +';
-      } else {
-        openFormButton.innerHTML = '<span>Close</span> - ';
-      }
+      reviewForm.classList.toggle('open');
+      openFormButton.innerHTML = reviewForm.classList.contains('open') ? '<span>Close</span> - ' : '<span>Add Review</span> +';
     });
 
     const reviewForm = document.querySelector('#review-form');
@@ -89,30 +91,7 @@ const Detail = {
     this._renderReviews(data.customerReviews);
   },
 
-  _renderDetail(restaurant) {
-    const detailContainer = document.querySelector('.detail');
-    detailContainer.innerHTML = `
-      <p class="title">${restaurant.name}</p>
-      <div class= "image-container">
-        <add-to-favorite-button></add-to-favorite-button>
-        <img src="${API_ENDPOINT.IMAGE.LARGE(restaurant.pictureId)}" alt="${restaurant.name} image" class="restaurant-image">
-      </div>
-      <div class="restaurant-detail">
-        <ul>
-          <li>Address : ${restaurant.address}</li>
-          <li>Category : ${restaurant.categories.map((category) => category.name).join(', ')}</li>
-          <li>City : ${restaurant.city}</li>
-          <li class="rating"><span>Rating :</span>
-          <img src="./svg/star.svg" alt=""> 
-          <span>${restaurant.rating.toFixed(2)}</span> 
-          </li>
-        </ul>
-        <p>${restaurant.description}</p>
-      </div>
-    `;
-  },
-
-  _renderMenu({ foods, drinks }) {
+  _renderMenus({ foods, drinks }) {
     const foodList = document.querySelector('#food-list');
     const drinksList = document.querySelector('#drinks-list');
     foodList.innerHTML = '';
