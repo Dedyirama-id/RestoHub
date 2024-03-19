@@ -48,6 +48,9 @@ const Detail = {
     this._renderMenu(restaurant.menus);
     this._renderReviews(restaurant.customerReviews);
 
+    const addToFavoriteButton = document.querySelector('add-to-favorite-button');
+    addToFavoriteButton.restaurant = restaurant;
+
     const openFormButton = document.querySelector('#add-review-button');
     openFormButton.addEventListener('click', () => {
       const reviewForm = document.querySelector('#review-form');
@@ -91,7 +94,7 @@ const Detail = {
     detailContainer.innerHTML = `
       <p class="title">${restaurant.name}</p>
       <div class= "image-container">
-        <button class="add-to-favorite"><span>Add to Favorite</span><img src="./svg/heart-regular.svg" alt="Favorite button"></button>
+        <add-to-favorite-button></add-to-favorite-button>
         <img src="${API_ENDPOINT.IMAGE.LARGE(restaurant.pictureId)}" alt="${restaurant.name} image" class="restaurant-image">
       </div>
       <div class="restaurant-detail">

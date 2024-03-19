@@ -2,6 +2,7 @@ import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/scss/style.scss';
 import './components/card-hover';
 import './components/review-card';
+import './components/add-to-favorite-btn';
 import App from './views/app';
 import swRegister from './utils/sw-register';
 

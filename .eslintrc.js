@@ -25,5 +25,6 @@ module.exports = {
     'max-len': 'off',
     'no-underscore-dangle': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'class-methods-use-this': 'off',
   },
 };

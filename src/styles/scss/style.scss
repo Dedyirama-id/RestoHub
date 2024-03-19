@@ -389,38 +389,6 @@ main {
     object-position: center;
   }
 
-  button.add-to-favorite {
-    min-width: 44px;
-    min-height: 44px;
-    border-radius: 80px;
-    -webkit-border-radius: 80px;
-    -moz-border-radius: 80px;
-    -ms-border-radius: 80px;
-    -o-border-radius: 80px;
-
-    background-color: $color-main;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    height: fit-content;
-    padding: 8px;
-
-    span {
-      font-size: $fs-base;
-      font-weight: bold;
-      color: $color-base;
-      padding: 0 16px;
-    }
-
-    img {
-      aspect-ratio: 1;
-      height: 28px;
-      padding: 2px;
-      object-fit: cover;
-    }
-  }
-
   .restaurant-detail {
     width: 100%;
     display: flex;
