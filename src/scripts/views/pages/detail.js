@@ -30,10 +30,13 @@ const Detail = {
         </div>
         <form id="review-form" class="review-form">
           <label for="name">Name</label>
-          <input type="text" name="name" id="name-input" placeholder="John Doe">
+          <input type="text" name="name" id="name-input" placeholder="John Doe" required>
           <label for="review">Review</label>
-          <input type="text" name="review" id="review-input" placeholder="Your review...">
-          <button type="submit" id="review-submit-btn" class="submit-btn">Submit</button>
+          <input type="text" name="review" id="review-input" placeholder="Your review..." required>
+          <div class="end-button-form">
+            <loader-status></loader-status>
+            <button type="submit" id="review-submit-btn" class="submit-btn">Submit</button>
+          </div>
         </form>
       </div>
       <div class="review-container"> 
@@ -48,8 +51,10 @@ const Detail = {
       behavior: 'smooth',
     });
 
+    const loaderStatus = document.querySelector('loader-status');
     const restaurantId = UrlParser.parseActiveUrlWithoutCombiner().id;
     try {
+      loaderStatus.renderLoad();
       const restaurant = await RestaurantApiSource.detailRestaurant(restaurantId);
       const detailContainer = document.querySelector('.detail');
       detailContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
@@ -60,7 +65,6 @@ const Detail = {
       const addToFavoriteButton = document.querySelector('add-to-favorite-button');
       addToFavoriteButton.restaurant = restaurant;
     } catch (error) {
-      const loaderStatus = document.querySelector('loader-status');
       loaderStatus.error = error;
     }
 
@@ -91,24 +95,28 @@ const Detail = {
   async _handleReviewSubmit(id) {
     const reviewForm = document.querySelector('#review-form');
     const reviewFormElements = reviewForm.querySelectorAll('input, button');
-    const reviewSubmitButton = reviewForm.querySelector('#review-submit-btn');
-    const loaderStatus = document.createElement('loader-status');
+    const loaderStatus = reviewForm.querySelector('loader-status');
     try {
       reviewFormElements.forEach((element) => {
         element.disabled = true;
       });
 
-      reviewSubmitButton.insertAdjacentElement('beforebegin', loaderStatus);
-
+      loaderStatus.renderLoad();
       const data = await RestaurantApiSource.postReview({
         id,
         name: document.querySelector('#name-input').value,
         review: document.querySelector('#review-input').value,
       });
+      loaderStatus.render();
 
       this._renderReviews(data.customerReviews);
     } catch (error) {
       loaderStatus.error = error;
+    } finally {
+      reviewFormElements.forEach((element) => {
+        element.disabled = false;
+        element.value = '';
+      });
     }
   },
 

@@ -570,7 +570,7 @@ main {
 
   .review-form {
     display: none;
-    grid-template-columns: max-content auto;
+    grid-template-columns: 80px auto;
     gap: 16px;
     align-items: center;
 
@@ -580,7 +580,6 @@ main {
       -moz-border-radius: 4px;
       -ms-border-radius: 4px;
       -o-border-radius: 4px;
-      padding: 8px;
       min-height: 44px;
       min-width: 44px;
       font-weight: 500;
@@ -600,6 +599,17 @@ main {
 
     input {
       color: $color-main;
+      padding: 8px;
+      border: 2px solid $color-main;
+    }
+
+    input:disabled,
+    button:disabled,
+    button:disabled:hover {
+      background-color: #f0f0f0;
+      opacity: 50%;
+      cursor: not-allowed;
+      color: $color-main;
     }
 
     .submit-btn {
@@ -617,6 +627,14 @@ main {
         background-color: $color-main;
         color: $color-base;
       }
+    }
+
+    .end-button-form {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      display: flex;
+      justify-content: end;
+      gap: 16px;
     }
   }
 

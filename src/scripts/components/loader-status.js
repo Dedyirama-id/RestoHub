@@ -7,12 +7,23 @@ class LoaderStatus extends HTMLElement {
   }
 
   connectedCallback() {
-    this.renderLoad();
+    this.render();
   }
 
   set error(error) {
     this._error = error;
     this._renderError();
+  }
+
+  render() {
+    this._shadowRoot.innerHTML = `
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
+      <div class="loader"></div>
+    `;
   }
 
   renderLoad() {
@@ -24,7 +35,7 @@ class LoaderStatus extends HTMLElement {
           justify-content: center;
           width: 100%;
           grid-column-start: 1;
-          grid-column-end: 4;
+          grid-column-end: 5;
         }
 
         .loader {

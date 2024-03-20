@@ -81,14 +81,15 @@ const RestaurantList = {
   async afterRender() {
     const ctaButton = document.querySelector('#cta-button');
     ctaButton.addEventListener('click', (event) => this._handleCtaClick(event));
+    const loaderStatus = document.querySelector('loader-status');
 
     try {
+      loaderStatus.renderLoad();
       const restaurants = await RestaurantApiSource.restaurantList();
       const restaurantsContainer = document.querySelector('#card-container');
       restaurantsContainer.innerHTML = '';
       RestaurantsInitiator.init(restaurantsContainer, restaurants);
     } catch (error) {
-      const loaderStatus = document.querySelector('loader-status');
       loaderStatus.error = error;
     }
 

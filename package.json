@@ -47,6 +47,9 @@
     "@dicebear/core": "^8.0.0",
     "idb": "^8.0.0",
     "regenerator-runtime": "^0.14.0",
+    "workbox-precaching": "^7.0.0",
+    "workbox-routing": "^7.0.0",
+    "workbox-strategies": "^7.0.0",
     "workbox-window": "^7.0.0"
   }
 }
