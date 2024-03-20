@@ -1,0 +1,112 @@
+{
+  "restaurants": [
+    {
+      "id": "6c7bqjgi84kcowlqdz",
+      "name": "Bring Your Phone Cafe",
+      "shortDescription": "Hang out and chill at Bring Your Phone Cafe in Medan. Try our awesome coffee and delicious bites!",
+      "description": "Bring Your Phone Cafe is a cool spot to relax with friends. The cozy ambiance and great coffee make it a perfect place to hang out. Experience the joy in every bite with our special menu. Welcome to Bring Your Phone Cafe!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/41",
+      "city": "Medan",
+      "rating": 4.6
+    },
+    {
+      "id": "ljx8i0qu2uckcowlqdz",
+      "name": "Run The Gun",
+      "shortDescription": "Explore Run The Gun in Bali for the best coffee and stunning views. A cafe with a vibe you'll love!",
+      "description": "Run The Gun is a must-visit coffee destination in Bali. With the finest coffee selection and breathtaking views, we invite you to enjoy memorable moments. Every menu item is prepared with care, ensuring a delightful experience. Come on over to Run The Gun!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/07",
+      "city": "Bali",
+      "rating": 4.6
+    },
+    {
+      "id": "fe8bbxoazddkcowlqdz",
+      "name": "Pangsit Express",
+      "shortDescription": "Savor the delicious pangsit at Pangsit Express in Ternate. It's a taste sensation you don't want to miss!",
+      "description": "Pangsit Express is a haven for pangsit lovers in Ternate. We offer a variety of pangsit fillings with authentic flavors. Each dish is served with love to ensure customer satisfaction. Enjoy the delight of pangsit at Pangsit Express!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/29",
+      "city": "Ternate",
+      "rating": 4.8
+    },
+    {
+      "id": "ik1zljmlf68kcowlqdz",
+      "name": "Ducky Duck",
+      "shortDescription": "Indulge in unique flavors at Ducky Duck in Malang. A culinary experience that's truly addictive!",
+      "description": "Ducky Duck brings a delightful culinary experience to Malang. Our menu features a range of unique flavors, from classic to creative. Coupled with a friendly atmosphere, it's a place you'll want to stay. Discover the deliciousness at Ducky Duck!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/38",
+      "city": "Malang",
+      "rating": 4.7
+    },
+    {
+      "id": "9jpuzkm6n6jkcowlqdz",
+      "name": "Kafein",
+      "shortDescription": "Enjoy the cozy cafe vibe at Kafein in Bali. Special coffee and tasty dishes await you!",
+      "description": "Kafein is the perfect spot for coffee lovers seeking a relaxed atmosphere. With great coffee options and comfortable decor, we invite you to savor the moment at Kafein. Give it a try, and you'll be hooked!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/40",
+      "city": "Bali",
+      "rating": 3.8
+    },
+    {
+      "id": "cpl5jpsnuqkkcowlqdz",
+      "name": "Makan Mudah",
+      "shortDescription": "A comfy place for tasty eats at Makan Mudah in Malang. Diverse food choices await you here!",
+      "description": "Makan Mudah is the go-to destination for those seeking simplicity in enjoying delicious food. Our menu is designed to satisfy various tastes, while the warm atmosphere makes you feel right at home. Enjoy the goodness at Makan Mudah!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/08",
+      "city": "Malang",
+      "rating": 4.6
+    },
+    {
+      "id": "iqtf9hmdzvbkcowlqdz",
+      "name": "Saya Suka",
+      "shortDescription": "Experience unique flavors at Saya Suka in Surabaya. Surprises with every bite!",
+      "description": "Saya Suka brings a fun culinary experience to Surabaya. Our menu features a variety of unique flavors, from classic to creative. Combined with a friendly atmosphere, it's a place you'll love to hang out. Discover the deliciousness at Saya Suka!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/32",
+      "city": "Surabaya",
+      "rating": 3.6
+    },
+    {
+      "id": "8i06gqcc2dpkcowlqdz",
+      "name": "Gigitan Cepat",
+      "shortDescription": "Savor quick and tasty bites at Gigitan Cepat in Aceh. Rich and satisfying flavor options!",
+      "description": "Gigitan Cepat is the ultimate culinary destination for those looking for quick and tasty bites in Aceh. Our menu is designed to satisfy various tastes, while the quality of ingredients and flavors remains our top priority. Enjoy quick bites at Gigitan Cepat!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/45",
+      "city": "Aceh",
+      "rating": 4
+    },
+    {
+      "id": "wf5o19xhxxkcowlqdz",
+      "name": "Fairy Cafe",
+      "shortDescription": "Discover flavor magic at Fairy Cafe in Malang. Special creations that will make you drool!",
+      "description": "Fairy Cafe invites you to explore the flavor magic in every dish we serve. With a creative menu and magical decor, we strive to provide an unforgettable culinary experience. Find the deliciousness in every bite at Fairy Cafe, where taste meets magic.",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/04",
+      "city": "Malang",
+      "rating": 3.9
+    },
+    {
+      "id": "ab12cd34ef56gh78ij",
+      "name": "Savor Delights",
+      "shortDescription": "Delight in special dishes at Savor Delights in Jakarta. Flavors and presentation that will amaze!",
+      "description": "Savor Delights is a place that combines special flavors with an elegant ambiance. Our menu is carefully crafted to satisfy your palate. We invite you to enjoy an unforgettable culinary experience at Savor Delights, where every bite is a delight.",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/12",
+      "city": "Jakarta",
+      "rating": 4.9
+    },
+    {
+      "id": "gh23ij45kl67mn89op",
+      "name": "Seafood Haven",
+      "shortDescription": "Explore the delights of seafood at Seafood Haven in Makassar. Fresh and tasty seafood options!",
+      "description": "Seafood Haven is a paradise for seafood lovers in Makassar. We offer a variety of fresh and authentic seafood dishes. Each dish at Seafood Haven is prepared with love to ensure the satisfaction of every customer. Enjoy the seafood delights at Seafood Haven!",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/21",
+      "city": "Makassar",
+      "rating": 4.7
+    },
+    {
+      "id": "op67qr89st12uv34wx",
+      "name": "Zen Noodle House",
+      "shortDescription": "Experience tranquility and deliciousness at Zen Noodle House in Yogyakarta. Tasty noodle and Asian dish options!",
+      "description": "Zen Noodle House brings together the tranquility and deliciousness in each of its dishes. Enjoy a variety of noodle options and tasty Asian dishes, served with our unique expertise. Visit Zen Noodle House, where you can experience tranquility while indulging in the delightful flavors.",
+      "pictureId": "https://restaurant-api.dicoding.dev/images/medium/33",
+      "city": "Yogyakarta",
+      "rating": 4.5
+    }
+  ]
+}
