@@ -12,7 +12,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
       <li>Category : ${restaurant.categories.map((category) => category.name).join(', ')}</li>
       <li>City : ${restaurant.city}</li>
       <li class="rating"><span>Rating :</span>
-      <img src="./svg/star.svg" alt=""> 
+      <img src="./svg/star.svg" alt="star icon" class="star-icon"> 
       <span>${restaurant.rating.toFixed(2)}</span> 
       </li>
     </ul>

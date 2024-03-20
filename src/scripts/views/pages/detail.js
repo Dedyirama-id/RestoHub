@@ -30,9 +30,9 @@ const Detail = {
         </div>
         <form id="review-form" class="review-form">
           <label for="name">Name</label>
-          <input type="text" name="name" id="name-input" placeholder="John Doe" required>
+          <input type="text" name="name" id="name-input" placeholder="Your name" required>
           <label for="review">Review</label>
-          <input type="text" name="review" id="review-input" placeholder="Your review..." required>
+          <input type="text" name="review" id="review-input" placeholder="Your review" required>
           <div class="end-button-form">
             <loader-status></loader-status>
             <button type="submit" id="review-submit-btn" class="submit-btn">Submit</button>

@@ -18,7 +18,7 @@ class CardHover extends HTMLElement {
     this._description = (data.description.length <= 100) ? data.description : `${data.description.slice(0, 100)}...`;
     this._pictureId = data.pictureId;
     this._city = data.city;
-    this._rating = data.rating;
+    this._rating = data.rating.toFixed(2);
     this.render();
   }
 

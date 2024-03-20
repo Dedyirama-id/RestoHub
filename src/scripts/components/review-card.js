@@ -55,6 +55,7 @@ class ReviewCard extends HTMLElement {
           background-color: black;
           border-radius: 50%; 
           flex-shrink: 0;
+          min-width: 64px;
         }
 
         .review-content {

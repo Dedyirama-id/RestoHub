@@ -111,7 +111,9 @@ const RestaurantList = {
     const searchRestaurantForm = document.querySelector('#restaurant-list .search-bar');
     const query = searchRestaurantForm.searchInput.value;
     const searchedRestaurant = await RestaurantApiSource.searchRestaurant(query);
-    this._showRestaurantList(searchedRestaurant);
+    const restaurantsContainer = document.querySelector('#card-container');
+    restaurantsContainer.innerHTML = '';
+    RestaurantsInitiator.init(restaurantsContainer, searchedRestaurant);
   },
 };
 

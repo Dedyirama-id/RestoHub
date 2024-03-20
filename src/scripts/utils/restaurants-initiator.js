@@ -7,6 +7,12 @@ const RestaurantsInitiator = {
         event.preventDefault();
         window.location.hash = `/detail/${event.target.id}`;
       });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          window.location.hash = `/detail/${event.target.id}`;
+        }
+      });
       restaurantsContainer.appendChild(card);
     });
   },
