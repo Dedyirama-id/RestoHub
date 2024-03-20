@@ -34,6 +34,7 @@ const RestaurantList = {
         </button>
       </form>
       <div id="card-container" class="card-container">
+        <loader-status></loader-status>
       </div>
     </section>
     <article id="article-1">
@@ -81,10 +82,15 @@ const RestaurantList = {
     const ctaButton = document.querySelector('#cta-button');
     ctaButton.addEventListener('click', (event) => this._handleCtaClick(event));
 
-    const restaurants = await RestaurantApiSource.restaurantList();
-    const restaurantsContainer = document.querySelector('#card-container');
-    restaurantsContainer.innerHTML = '';
-    RestaurantsInitiator.init(restaurantsContainer, restaurants);
+    try {
+      const restaurants = await RestaurantApiSource.restaurantList();
+      const restaurantsContainer = document.querySelector('#card-container');
+      restaurantsContainer.innerHTML = '';
+      RestaurantsInitiator.init(restaurantsContainer, restaurants);
+    } catch (error) {
+      const loaderStatus = document.querySelector('loader-status');
+      loaderStatus.error = error;
+    }
 
     const searchRestaurantForm = document.querySelector('#restaurant-list .search-bar');
     searchRestaurantForm.addEventListener('submit', async (event) => this._handleSearchSubmit(event));

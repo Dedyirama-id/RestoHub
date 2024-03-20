@@ -6,6 +6,7 @@ const Detail = {
   async render() {
     return `
     <div class="detail">
+      <loader-status></loader-status>
     </div>
     <div id="menu" class="menu">
       <h2>Menu List</h2>
@@ -48,15 +49,20 @@ const Detail = {
     });
 
     const restaurantId = UrlParser.parseActiveUrlWithoutCombiner().id;
-    const restaurant = await RestaurantApiSource.detailRestaurant(restaurantId);
-    const detailContainer = document.querySelector('.detail');
-    detailContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+    try {
+      const restaurant = await RestaurantApiSource.detailRestaurant(restaurantId);
+      const detailContainer = document.querySelector('.detail');
+      detailContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
 
-    this._renderMenus(restaurant.menus);
-    this._renderReviews(restaurant.customerReviews);
+      this._renderMenus(restaurant.menus);
+      this._renderReviews(restaurant.customerReviews);
 
-    const addToFavoriteButton = document.querySelector('add-to-favorite-button');
-    addToFavoriteButton.restaurant = restaurant;
+      const addToFavoriteButton = document.querySelector('add-to-favorite-button');
+      addToFavoriteButton.restaurant = restaurant;
+    } catch (error) {
+      const loaderStatus = document.querySelector('loader-status');
+      loaderStatus.error = error;
+    }
 
     const openFormButton = document.querySelector('#add-review-button');
     openFormButton.addEventListener('click', () => {

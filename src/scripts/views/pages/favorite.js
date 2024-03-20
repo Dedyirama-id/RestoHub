@@ -1,4 +1,5 @@
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
+import RestaurantsInitiator from '../../utils/restaurants-initiator';
 
 const Favorite = {
   async render() {
@@ -13,18 +14,9 @@ const Favorite = {
 
   async afterRender() {
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-    this._showRestaurantList(restaurants);
-  },
-
-  _showRestaurantList(restaurants) {
-    const restaurantCardContainer = document.querySelector('#card-container');
-    restaurantCardContainer.innerHTML = '';
-    restaurants.forEach((restaurant) => {
-      const card = document.createElement('card-hover');
-      card.data = restaurant;
-      restaurantCardContainer.appendChild(card);
-      card.addEventListener('click', (event) => this._handleCardClick(event));
-    });
+    const restaurantsContainer = document.querySelector('#card-container');
+    restaurantsContainer.innerHTML = '';
+    RestaurantsInitiator.init(restaurantsContainer, restaurants);
   },
 
   _handleCardClick(event) {

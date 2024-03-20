@@ -3,6 +3,7 @@ import '../styles/scss/style.scss';
 import './components/card-hover';
 import './components/review-card';
 import './components/add-to-favorite-btn';
+import './components/loader-status';
 import App from './views/app';
 import swRegister from './utils/sw-register';
 
