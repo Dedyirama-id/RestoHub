@@ -89,12 +89,27 @@ const Detail = {
   },
 
   async _handleReviewSubmit(id) {
-    const data = await RestaurantApiSource.postReview({
-      id,
-      name: document.querySelector('#name-input').value,
-      review: document.querySelector('#review-input').value,
-    });
-    this._renderReviews(data.customerReviews);
+    const reviewForm = document.querySelector('#review-form');
+    const reviewFormElements = reviewForm.querySelectorAll('input, button');
+    const reviewSubmitButton = reviewForm.querySelector('#review-submit-btn');
+    const loaderStatus = document.createElement('loader-status');
+    try {
+      reviewFormElements.forEach((element) => {
+        element.disabled = true;
+      });
+
+      reviewSubmitButton.insertAdjacentElement('beforebegin', loaderStatus);
+
+      const data = await RestaurantApiSource.postReview({
+        id,
+        name: document.querySelector('#name-input').value,
+        review: document.querySelector('#review-input').value,
+      });
+
+      this._renderReviews(data.customerReviews);
+    } catch (error) {
+      loaderStatus.error = error;
+    }
   },
 
   _renderMenus({ foods, drinks }) {

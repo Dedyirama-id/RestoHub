@@ -1,3 +1,5 @@
+import createAvatarWithSeed from '../utils/avatar-maker';
+
 class ReviewCard extends HTMLElement {
   constructor() {
     super();
@@ -40,7 +42,7 @@ class ReviewCard extends HTMLElement {
           display: flex;
           flex-direction: column;
           padding: 8px;
-          gap: 8px;
+          gap: 16px;
           min-width: fit-content;
         }
 
@@ -108,7 +110,9 @@ class ReviewCard extends HTMLElement {
       </style>
 
       <div class="card">
-        <img src="./images/logo.png" alt="" class="avatar">
+        <div class="avatar">
+          ${createAvatarWithSeed(this._name)}
+        </div>
         <div class="review-content">
           <h2>${this._name}</h2>
           <p class="review">${this._review}</p>
