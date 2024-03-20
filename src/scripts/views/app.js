@@ -30,6 +30,11 @@ class App {
       loaderStatus.renderLoad();
       this._content.innerHTML = await page.render();
       await page.afterRender();
+      const skipLinkElement = document.querySelector('#skip-to-content');
+      skipLinkElement.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.querySelector('#main-content').focus();
+      });
     } catch (error) {
       loaderStatus.error = error;
     }

@@ -27,6 +27,9 @@ $color-main: black;
 a {
   text-decoration: none;
   color: $color-main;
+  display: inline-block;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 p {
@@ -36,6 +39,11 @@ p {
 button {
   cursor: pointer;
   border: none;
+}
+
+button, input{
+  min-width: 44px;
+  min-height: 44px;
 }
 
 body {
@@ -538,6 +546,7 @@ main {
       -o-border-radius: 8px;
       background-color: transparent;
       min-height: 44px;
+      min-width: 44px;
       display: flex;
       gap: 8px;
       align-items: center;

@@ -45,6 +45,10 @@ class AddToFavoriteBtn extends HTMLElement {
           border: none;     
         }
 
+        button:focus {
+          outline: 4px solid orange;
+        }
+
         span {
           font-size: clamp(1rem, 0.45vw + 0.89rem, 1.25rem);
           font-weight: bold;
