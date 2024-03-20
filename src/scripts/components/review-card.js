@@ -24,7 +24,7 @@ class ReviewCard extends HTMLElement {
       <style>
         :host {
           display: block;
-          min-width: 300px;
+          min-width: 100px;
           width: 100%;
         }
           
