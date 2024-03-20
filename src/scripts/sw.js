@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-restricted-globals */
 import { precacheAndRoute } from 'workbox-precaching';
 import { registerRoute, Route } from 'workbox-routing';
