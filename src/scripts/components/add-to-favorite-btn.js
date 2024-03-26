@@ -1,4 +1,6 @@
 import FavoriteMovieIdb from '../data/favorite-restaurant-idb';
+import addToFavoriteBtnLogic from './add-to-favorite-btn.logic';
+import addToFavoriteBtnView from './add-to-favorite-btn.view';
 
 class AddToFavoriteBtn extends HTMLElement {
   constructor() {
@@ -12,105 +14,22 @@ class AddToFavoriteBtn extends HTMLElement {
   }
 
   async render() {
-    this._shadowRoot.innerHTML = `
-      <style>
-        :host {
-          display: block;
-        }
-          
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Inter', sans-serif;
-        }
-
-        button.add-to-favorite {
-          min-width: 44px;
-          min-height: 44px;
-          border-radius: 80px;
-          -webkit-border-radius: 80px;
-          -moz-border-radius: 80px;
-          -ms-border-radius: 80px;
-          -o-border-radius: 80px;
-
-          background-color: black;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: fit-content;
-          height: fit-content;
-          padding: 8px;     
-          outline: none;
-          border: none;     
-        }
-
-        button:focus {
-          outline: 4px solid orange;
-        }
-
-        span {
-          font-size: clamp(1rem, 0.45vw + 0.89rem, 1.25rem);
-          font-weight: bold;
-          color: white;
-          padding: 0 16px;
-        }
-        
-        img {
-          aspect-ratio: 1;
-          height: 28px;
-          padding: 2px;
-          object-fit: cover;
-        }
-      </style>
-
-      <button class="add-to-favorite"></button>
-    `;
-
     const { id } = this._restaurant;
+    this._shadowRoot.innerHTML = addToFavoriteBtnView.createStyleTemplate();
 
-    if (await this._isRestaurantExist(id)) {
-      this._renderFavorited();
+    if (await addToFavoriteBtnLogic.isRestaurantExist(id)) {
+      this._shadowRoot.innerHTML += addToFavoriteBtnView.createFavoritedButtonTemplate();
+      this._shadowRoot.querySelector('button').addEventListener('click', async () => {
+        await FavoriteMovieIdb.deleteRestaurant(id);
+        this.render();
+      });
     } else {
-      this._renderFavorite();
+      this._shadowRoot.innerHTML += addToFavoriteBtnView.createFavoriteButtonTemplate();
+      this._shadowRoot.querySelector('button').addEventListener('click', async () => {
+        await FavoriteMovieIdb.putRestaurant(this._restaurant);
+        this.render();
+      });
     }
-  }
-
-  async _isRestaurantExist(id) {
-    const movie = await FavoriteMovieIdb.getRestaurant(id);
-    return !!movie;
-  }
-
-  _favoriteButtonTemplate() {
-    return `
-        <span>Add to Favorite</span>
-        <img src="./svg/heart-regular.svg" alt="Favorite button">
-    `;
-  }
-
-  _favoritedButtonTemplate() {
-    return `
-        <span>Added</span>
-        <img src="./svg/heart-solid.svg" alt="Favorite button">
-    `;
-  }
-
-  _renderFavorite() {
-    const favoriteButton = this._shadowRoot.querySelector('.add-to-favorite');
-    favoriteButton.innerHTML = this._favoriteButtonTemplate();
-    favoriteButton.addEventListener('click', async () => {
-      FavoriteMovieIdb.putRestaurant(this._restaurant);
-      this.render();
-    });
-  }
-
-  _renderFavorited() {
-    const favoriteButton = this._shadowRoot.querySelector('.add-to-favorite');
-    favoriteButton.innerHTML = this._favoritedButtonTemplate();
-    favoriteButton.addEventListener('click', async () => {
-      FavoriteMovieIdb.deleteRestaurant(this._restaurant.id);
-      this.render();
-    });
   }
 }
 customElements.define('add-to-favorite-button', AddToFavoriteBtn);
