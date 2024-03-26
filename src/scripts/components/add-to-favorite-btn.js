@@ -19,12 +19,14 @@ class AddToFavoriteBtn extends HTMLElement {
 
     if (await addToFavoriteBtnLogic.isRestaurantExist(id)) {
       this._shadowRoot.innerHTML += addToFavoriteBtnView.createFavoritedButtonTemplate();
+      this.setAttribute('aria-label', 'remove from favorite');
       this._shadowRoot.querySelector('button').addEventListener('click', async () => {
         await FavoriteMovieIdb.deleteRestaurant(id);
         this.render();
       });
     } else {
       this._shadowRoot.innerHTML += addToFavoriteBtnView.createFavoriteButtonTemplate();
+      this.setAttribute('aria-label', 'add to favorite');
       this._shadowRoot.querySelector('button').addEventListener('click', async () => {
         await FavoriteMovieIdb.putRestaurant(this._restaurant);
         this.render();

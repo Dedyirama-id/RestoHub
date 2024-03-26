@@ -56,7 +56,7 @@ const addToFavoriteBtnView = {
 
   createFavoriteButtonTemplate() {
     return `
-        <button class="add-to-favorite" aria-label="add to favorite">
+        <button class="add-to-favorite">
           <span>Add to Favorite</span>
           <img src="./svg/heart-regular.svg" alt="Favorite button">
         </button>
@@ -65,7 +65,7 @@ const addToFavoriteBtnView = {
 
   createFavoritedButtonTemplate() {
     return `
-        <button class="add-to-favorite" aria-label="remove from favorite">
+        <button class="add-to-favorite">
           <span>Remove</span>
           <img src="./svg/heart-solid.svg" alt="Favorite button">
         </button>
