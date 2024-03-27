@@ -54,7 +54,7 @@ const addToFavoriteBtnView = {
     `;
   },
 
-  createFavoriteButtonTemplate() {
+  createFavoriteRestaurantButtonTemplate() {
     return `
         <button class="add-to-favorite">
           <span>Add to Favorite</span>
@@ -63,7 +63,7 @@ const addToFavoriteBtnView = {
     `;
   },
 
-  createFavoritedButtonTemplate() {
+  createUnfavoriteRestaurantButtonTemplate() {
     return `
         <button class="add-to-favorite">
           <span>Remove</span>

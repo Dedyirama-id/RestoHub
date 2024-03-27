@@ -27,5 +27,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'class-methods-use-this': 'off',
     'no-param-reassign': 'off',
+    'consistent-return': 'off',
+    'import/prefer-default-export': 'off',
   },
 };

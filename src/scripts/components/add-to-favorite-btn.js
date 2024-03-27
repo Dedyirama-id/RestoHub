@@ -19,7 +19,7 @@ class AddToFavoriteBtn extends HTMLElement {
     if (await addToFavoriteBtnLogic.isRestaurantExist(id)) {
       this._shadowRoot.innerHTML = `
         ${addToFavoriteBtnView.createStyleTemplate()}
-        ${addToFavoriteBtnView.createFavoritedButtonTemplate()}
+        ${addToFavoriteBtnView.createUnfavoriteRestaurantButtonTemplate()}
       `;
       this.setAttribute('aria-label', 'remove from favorite');
       this.addEventListener('click', async () => {
@@ -29,7 +29,7 @@ class AddToFavoriteBtn extends HTMLElement {
     } else {
       this._shadowRoot.innerHTML = `
         ${addToFavoriteBtnView.createStyleTemplate()}
-        ${addToFavoriteBtnView.createFavoriteButtonTemplate()}
+        ${addToFavoriteBtnView.createFavoriteRestaurantButtonTemplate()}
       `;
       this.setAttribute('aria-label', 'add to favorite');
       this.addEventListener('click', async () => {
