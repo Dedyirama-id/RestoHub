@@ -15,19 +15,24 @@ class AddToFavoriteBtn extends HTMLElement {
 
   async render() {
     const { id } = this._restaurant;
-    this._shadowRoot.innerHTML = addToFavoriteBtnView.createStyleTemplate();
 
     if (await addToFavoriteBtnLogic.isRestaurantExist(id)) {
-      this._shadowRoot.innerHTML += addToFavoriteBtnView.createFavoritedButtonTemplate();
+      this._shadowRoot.innerHTML = `
+        ${addToFavoriteBtnView.createStyleTemplate()}
+        ${addToFavoriteBtnView.createFavoritedButtonTemplate()}
+      `;
       this.setAttribute('aria-label', 'remove from favorite');
-      this._shadowRoot.querySelector('button').addEventListener('click', async () => {
+      this.addEventListener('click', async () => {
         await FavoriteMovieIdb.deleteRestaurant(id);
         this.render();
       });
     } else {
-      this._shadowRoot.innerHTML += addToFavoriteBtnView.createFavoriteButtonTemplate();
+      this._shadowRoot.innerHTML = `
+        ${addToFavoriteBtnView.createStyleTemplate()}
+        ${addToFavoriteBtnView.createFavoriteButtonTemplate()}
+      `;
       this.setAttribute('aria-label', 'add to favorite');
-      this._shadowRoot.querySelector('button').addEventListener('click', async () => {
+      this.addEventListener('click', async () => {
         await FavoriteMovieIdb.putRestaurant(this._restaurant);
         this.render();
       });
