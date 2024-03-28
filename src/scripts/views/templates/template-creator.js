@@ -20,4 +20,19 @@ const createRestaurantDetailTemplate = (restaurant) => `
   </div>
 `;
 
-export default createRestaurantDetailTemplate;
+const createRestaurantItemTemplate = (restaurant) => `
+  <div class="restaurant-item">
+    <div class="restaurant-item__header">
+      <img class="restaurant-item__header__picture" alt="${restaurant.name}" src="${API_ENDPOINT.IMAGE.SMALL(restaurant.pictureId)}">
+    </div>
+    <div class="restaurant-item__content">
+      <h3 class="restaurant-item__content__title">${restaurant.name}</h3>
+      <p>${restaurant.description}</p>
+    </div>
+  </div>
+`;
+
+export {
+  createRestaurantItemTemplate,
+  createRestaurantDetailTemplate,
+};

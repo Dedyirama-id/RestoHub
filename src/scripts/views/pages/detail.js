@@ -1,3 +1,4 @@
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import RestaurantApiSource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
 import createRestaurantDetailTemplate from '../templates/template-creator';
@@ -64,6 +65,7 @@ const Detail = {
 
       const addToFavoriteButton = document.querySelector('add-to-favorite-button');
       addToFavoriteButton.restaurant = restaurant;
+      addToFavoriteButton.favoriteRestaurants = FavoriteRestaurantIdb;
     } catch (error) {
       loaderStatus.error = error;
     }

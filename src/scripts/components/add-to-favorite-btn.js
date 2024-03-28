@@ -1,4 +1,3 @@
-import FavoriteMovieIdb from '../data/favorite-restaurant-idb';
 import addToFavoriteBtnLogic from './add-to-favorite-btn.logic';
 import addToFavoriteBtnView from './add-to-favorite-btn.view';
 
@@ -13,6 +12,11 @@ class AddToFavoriteBtn extends HTMLElement {
     this.render();
   }
 
+  set favoriteRestaurants(favoriteRestaurants) {
+    this._favoriteRestaurants = favoriteRestaurants;
+    this.render();
+  }
+
   async render() {
     const { id } = this._restaurant;
 
@@ -23,7 +27,7 @@ class AddToFavoriteBtn extends HTMLElement {
       `;
       this.setAttribute('aria-label', 'remove from favorite');
       this.addEventListener('click', async () => {
-        await FavoriteMovieIdb.deleteRestaurant(id);
+        await this._favoriteRestaurants.deleteRestaurant(id);
         this.render();
       });
     } else {
@@ -33,7 +37,7 @@ class AddToFavoriteBtn extends HTMLElement {
       `;
       this.setAttribute('aria-label', 'add to favorite');
       this.addEventListener('click', async () => {
-        await FavoriteMovieIdb.putRestaurant(this._restaurant);
+        await this._favoriteRestaurants.putRestaurant(this._restaurant);
         this.render();
       });
     }
