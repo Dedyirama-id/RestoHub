@@ -3,6 +3,7 @@ import {
 } from '@jest/globals';
 import FavoriteRestaurantSearchPresenter from '../src/scripts/views/pages/favoritedRestaurant/favorite-restaurant-search-presenter';
 import FavoriteRestaurantView from '../src/scripts/views/pages/favoritedRestaurant/favorite-restaurant-view';
+import '../src/scripts/components/card-hover';
 
 describe('Searching restaurants', () => {
   let presenter;
@@ -61,9 +62,15 @@ describe('Searching restaurants', () => {
       favoriteRestaurants.searchRestaurants.mockImplementation((query) => {
         if (query === 'restaurant a') {
           return [
-            { id: 111, title: 'restaurant abc' },
-            { id: 222, title: 'ada juga restaurant abcde' },
-            { id: 333, title: 'ini juga boleh restaurant a' },
+            {
+              id: 111, name: 'restaurant abc', description: 'ini adalah restaurant abc', rating: 5,
+            },
+            {
+              id: 222, name: 'ada juga restaurant abcde', description: 'ini adalah restaurant abcde', rating: 4.5,
+            },
+            {
+              id: 333, name: 'ini juga boleh restaurant a', description: 'ini adalah restaurant a', rating: 4,
+            },
           ];
         }
         return [];
@@ -76,11 +83,11 @@ describe('Searching restaurants', () => {
       document
         .getElementById('restaurants')
         .addEventListener('restaurants:updated', () => {
-          const retaurantTitles = document.querySelectorAll('.restaurant__title');
+          const restaurantElements = document.querySelectorAll('.restaurant-item');
 
-          expect(retaurantTitles.item(0).textContent).toEqual('restaurant abc');
-          expect(retaurantTitles.item(1).textContent).toEqual('ada juga restaurant abcde');
-          expect(retaurantTitles.item(2).textContent).toEqual('ini juga boleh restaurant a');
+          expect(restaurantElements.item(0).showedTitle).toEqual('restaurant abc');
+          expect(restaurantElements.item(1).showedTitle).toEqual('ada juga restaurant abcde');
+          expect(restaurantElements.item(2).showedTitle).toEqual('ini juga boleh restaurant a');
 
           done();
         });
@@ -88,9 +95,15 @@ describe('Searching restaurants', () => {
       favoriteRestaurants.searchRestaurants.mockImplementation((query) => {
         if (query === 'restaurant a') {
           return [
-            { id: 111, title: 'restaurant abc' },
-            { id: 222, title: 'ada juga restaurant abcde' },
-            { id: 333, title: 'ini juga boleh restaurant a' },
+            {
+              id: 111, name: 'restaurant abc', description: 'ini adalah restaurant abc', rating: 5,
+            },
+            {
+              id: 222, name: 'ada juga restaurant abcde', description: 'ini adalah restaurant abcde', rating: 4.5,
+            },
+            {
+              id: 333, name: 'ini juga boleh restaurant a', description: 'ini adalah restaurant a', rating: 4,
+            },
           ];
         }
 
@@ -103,8 +116,8 @@ describe('Searching restaurants', () => {
     it('should show - when the restaurant returned does not contain a title', (done) => {
       document.getElementById('restaurants')
         .addEventListener('restaurants:updated', () => {
-          const restaurantTitles = document.querySelectorAll('.restaurant__title');
-          expect(restaurantTitles.item(0).textContent)
+          const restaurantElements = document.querySelectorAll('.restaurant-item');
+          expect(restaurantElements.item(0).showedTitle)
             .toEqual('-');
 
           done();
@@ -112,7 +125,9 @@ describe('Searching restaurants', () => {
 
       favoriteRestaurants.searchRestaurants.mockImplementation((query) => {
         if (query === 'restaurant a') {
-          return [{ id: 444 }];
+          return [{
+            id: 444, description: 'ini adalah restaurant tanpa nama', rating: 4,
+          }];
         }
 
         return [];

@@ -26,6 +26,10 @@ class CardHover extends HTMLElement {
     return this._id;
   }
 
+  get showedTitle() {
+    return this._shadowRoot.querySelector('.restaurant-item__title').textContent;
+  }
+
   render() {
     this._shadowRoot.innerHTML = `
       <style>
@@ -137,10 +141,10 @@ class CardHover extends HTMLElement {
         }
       </style>
 
-      <div id="${this._id}" tabindex="0" aria-label="${this._name}" class="card">
-        <img src="${API_ENDPOINT.IMAGE.SMALL(this._pictureId)}" alt="${this._name} image" class="main-img">
+      <div id="${this._id}" tabindex="0" aria-label="${this._name || '-'}}" class="card">
+        <img src="${API_ENDPOINT.IMAGE.SMALL(this._pictureId)}" alt="${this._name || '-'} image" class="main-img">
         <div class="text-content">
-          <h2 class="name">${this._name}</h2>
+          <h2 class="restaurant-item__title name">${this._name || '-'}</h2>
           <p class="desc">${this._description}</p>
         </div>
         <ul class="tag-container">
