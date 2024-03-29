@@ -2,6 +2,7 @@ const RestaurantsInitiator = {
   init(restaurantsContainer, restaurants) {
     restaurants.forEach((restaurant) => {
       const card = document.createElement('card-hover');
+      card.classList.add('restaurant-item');
       card.data = restaurant;
       card.addEventListener('click', (event) => {
         event.preventDefault();

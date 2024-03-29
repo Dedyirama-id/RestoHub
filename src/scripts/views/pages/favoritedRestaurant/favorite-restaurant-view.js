@@ -1,5 +1,7 @@
 // import { createRestaurantItemTemplate } from '../../templates/template-creator';
 
+import RestaurantsInitiator from '../../../utils/restaurants-initiator';
+
 class FavoriteRestaurantView {
   getTemplate() {
     return `
@@ -24,10 +26,9 @@ class FavoriteRestaurantView {
   }
 
   showFavoriteRestaurants(restaurants) {
+    document.querySelector('#restaurants').innerHTML = '';
     if (restaurants.length) {
-      restaurants.forEach((restaurant) => {
-        document.querySelector('#restaurants').appendChild(this._getRestaurantItemTemplate(restaurant));
-      });
+      RestaurantsInitiator.init(document.querySelector('#restaurants'), restaurants);
     } else {
       document.querySelector('#restaurants').innerHTML = this._getEmptyRestaurantTemplate();
     }
@@ -35,13 +36,6 @@ class FavoriteRestaurantView {
     document
       .getElementById('restaurants')
       .dispatchEvent(new Event('restaurants:updated'));
-  }
-
-  _getRestaurantItemTemplate(restaurant) {
-    const restaurantElement = document.createElement('card-hover');
-    restaurantElement.classList.add('restaurant-item');
-    restaurantElement.data = restaurant;
-    return restaurantElement;
   }
 
   _getEmptyRestaurantTemplate() {

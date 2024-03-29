@@ -29,5 +29,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'consistent-return': 'off',
     'import/prefer-default-export': 'off',
+    'no-new': 'off',
   },
 };
