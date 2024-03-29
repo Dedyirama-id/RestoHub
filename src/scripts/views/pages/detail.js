@@ -1,7 +1,7 @@
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import RestaurantApiSource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
-import createRestaurantDetailTemplate from '../templates/template-creator';
+import { createRestaurantDetailTemplate } from '../templates/template-creator';
 
 const Detail = {
   async render() {

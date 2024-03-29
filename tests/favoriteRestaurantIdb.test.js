@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+import { afterEach, describe } from '@jest/globals';
 import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
 import { itActsAsFavoriteRestaurantModel } from './contracts/favoriteRestaurantContract';
 

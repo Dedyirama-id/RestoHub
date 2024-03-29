@@ -1,11 +1,12 @@
+import { createRestaurantItemTemplate } from '../../templates/template-creator';
+
 class FavoriteRestaurantView {
   getTemplate() {
     return `
       <div id="restaurant-search-container">
         <input id="query" type="text">
-        <div class="restaurant-result-container">
-          <ul class="restaurants">
-          </ul>
+        <h2 class="content__heading">Your Favorited Restaurant</h2>
+        <div id="restaurants" class="restaurants">
         </div>
       </div>
     `;
@@ -17,22 +18,26 @@ class FavoriteRestaurantView {
     });
   }
 
-  showRestaurants(restaurants) {
+  showFavoriteRestaurants(restaurants) {
     let html;
-    if (restaurants.length > 0) {
-      html = restaurants.reduce((carry, restaurant) => carry.concat(`
-        <li class="restaurant">
-          <span class="restaurant__title">${restaurant.title || '-'}</span>
-        </li>
-        `), '');
+    if (restaurants.length) {
+      html = restaurants.reduce((carry, restaurant) => carry.concat(createRestaurantItemTemplate(restaurant)), '');
     } else {
-      html = '<div class="restaurants__not__found">Restaurant tidak ditemukan</div>';
+      html = this._getEmptyRestaurantTemplate();
     }
 
     document.querySelector('.restaurants').innerHTML = html;
     document
-      .getElementById('restaurant-search-container')
-      .dispatchEvent(new Event('restaurants:searched:updated'));
+      .getElementById('restaurants')
+      .dispatchEvent(new Event('restaurants:updated'));
+  }
+
+  _getEmptyRestaurantTemplate() {
+    return `
+      <div class="restaurant-item__not__found">
+        Tidak ada restaurant untuk ditampilkan
+      </div>
+    `;
   }
 }
 

@@ -1,5 +1,6 @@
-/* eslint-disable no-undef */
-
+import {
+  afterEach, beforeEach, describe, expect, it,
+} from '@jest/globals';
 import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
 import * as TestFactories from './helpers/testFactories';
 

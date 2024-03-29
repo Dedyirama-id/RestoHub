@@ -1,5 +1,7 @@
 /* eslint-disable no-return-assign */
-/* eslint-disable no-undef */
+import {
+  beforeEach, describe, expect, it,
+} from '@jest/globals';
 
 import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
 import * as TestFactories from './helpers/testFactories';

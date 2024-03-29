@@ -1,15 +1,16 @@
+/* eslint-disable no-new */
 import {
   beforeEach, describe, expect, it, jest,
 } from '@jest/globals';
 import FavoriteRestaurantShowPresenter from '../src/scripts/views/pages/favoritedRestaurant/favorite-restaurant-show-presenter';
-import FavoriteRestaurantSearchView from '../src/scripts/views/pages/favoritedRestaurant/favorite-restaurant-search-view';
+import FavoriteRestaurantView from '../src/scripts/views/pages/favoritedRestaurant/favorite-restaurant-view';
 
 describe('Showing all favorite restaurants', () => {
   let view;
 
   const renderTemplate = () => {
-    view = new FavoriteRestaurantSearchView();
-    document.body.innerHTML = view.getFavoriteRestaurantTemplate();
+    view = new FavoriteRestaurantView();
+    document.body.innerHTML = view.getTemplate();
   };
 
   beforeEach(() => {

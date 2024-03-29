@@ -1,4 +1,5 @@
 import API_ENDPOINT from '../../globals/api-endpoint';
+import CONFIG from '../../globals/config';
 
 const createRestaurantDetailTemplate = (restaurant) => `
   <p class="title">${restaurant.name}</p>
@@ -23,11 +24,15 @@ const createRestaurantDetailTemplate = (restaurant) => `
 const createRestaurantItemTemplate = (restaurant) => `
   <div class="restaurant-item">
     <div class="restaurant-item__header">
-      <img class="restaurant-item__header__picture" alt="${restaurant.name}" src="${API_ENDPOINT.IMAGE.SMALL(restaurant.pictureId)}">
+      <img class="restaurant-item__header__poster" alt="${restaurant.title || '-'}"
+           src="${restaurant.backdrop_path ? CONFIG.BASE_IMAGE_URL + restaurant.backdrop_path : 'https://picsum.photos/id/666/800/450?grayscale'}">
+      <div class="restaurant-item__header__rating">
+        <p>⭐️<span class="restaurant-item__header__rating__score">${restaurant.vote_average || '-'}</span></p>
+      </div>
     </div>
     <div class="restaurant-item__content">
-      <h3 class="restaurant-item__content__title">${restaurant.name}</h3>
-      <p>${restaurant.description}</p>
+      <h3 class="restaurant__title"><a href="/#/detail/${restaurant.id}">${restaurant.title || '-'}</a></h3>
+      <p>${restaurant.overview || '-'}</p>
     </div>
   </div>
 `;
