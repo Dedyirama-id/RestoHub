@@ -3,10 +3,15 @@ import { createRestaurantItemTemplate } from '../../templates/template-creator';
 class FavoriteRestaurantView {
   getTemplate() {
     return `
-      <div id="restaurant-search-container">
-        <input id="query" type="text">
+      <div id="favorite-restaurant-list">
         <h2 class="content__heading">Your Favorited Restaurant</h2>
-        <div id="restaurants" class="restaurants">
+        <form class="search-bar">
+          <input id="query" aria-label="Search restaurant input" class="search-input" type="text" placeholder="Restaurant for you...">
+          <button class="submit-btn" type="submit" disabled>
+            <p>Search</p>
+          </button>
+        </form>
+        <div id="restaurants" class="card-container">
         </div>
       </div>
     `;
@@ -26,7 +31,7 @@ class FavoriteRestaurantView {
       html = this._getEmptyRestaurantTemplate();
     }
 
-    document.querySelector('.restaurants').innerHTML = html;
+    document.querySelector('#restaurants').innerHTML = html;
     document
       .getElementById('restaurants')
       .dispatchEvent(new Event('restaurants:updated'));
