@@ -30,5 +30,7 @@ module.exports = {
     'consistent-return': 'off',
     'import/prefer-default-export': 'off',
     'no-new': 'off',
+    'no-plusplus': 'off',
+    'no-await-in-loop': 'off',
   },
 };
