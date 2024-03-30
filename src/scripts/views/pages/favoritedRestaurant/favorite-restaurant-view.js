@@ -1,5 +1,3 @@
-// import { createRestaurantItemTemplate } from '../../templates/template-creator';
-
 import RestaurantsInitiator from '../../../utils/restaurants-initiator';
 
 class FavoriteRestaurantView {

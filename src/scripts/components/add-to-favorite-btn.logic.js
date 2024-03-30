@@ -1,9 +1,9 @@
-import FavoriteMovieIdb from '../data/favorite-restaurant-idb';
+import FavoriteRestaurantIdb from '../data/favorite-restaurant-idb';
 
 const addToFavoriteBtnLogic = {
   async isRestaurantExist(id) {
-    const movie = await FavoriteMovieIdb.getRestaurant(id);
-    return !!movie;
+    const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
+    return !!restaurant;
   },
 };
 

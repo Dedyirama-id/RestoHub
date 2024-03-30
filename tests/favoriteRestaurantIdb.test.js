@@ -4,8 +4,8 @@ import { itActsAsFavoriteRestaurantModel } from './contracts/favoriteRestaurantC
 
 describe('Favorite Restaurant Idb Contract Test Implementation', () => {
   afterEach(async () => {
-    (await FavoriteRestaurantIdb.getAllRestaurants()).forEach(async (movie) => {
-      await FavoriteRestaurantIdb.deleteRestaurant(movie.id);
+    (await FavoriteRestaurantIdb.getAllRestaurants()).forEach(async (restaurant) => {
+      await FavoriteRestaurantIdb.deleteRestaurant(restaurant.id);
     });
   });
 

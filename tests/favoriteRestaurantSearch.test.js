@@ -85,9 +85,9 @@ describe('Searching restaurants', () => {
         .addEventListener('restaurants:updated', () => {
           const restaurantElements = document.querySelectorAll('.restaurant-item');
 
-          expect(restaurantElements.item(0).showedTitle).toEqual('restaurant abc');
-          expect(restaurantElements.item(1).showedTitle).toEqual('ada juga restaurant abcde');
-          expect(restaurantElements.item(2).showedTitle).toEqual('ini juga boleh restaurant a');
+          expect(restaurantElements.item(0).showedName).toEqual('restaurant abc');
+          expect(restaurantElements.item(1).showedName).toEqual('ada juga restaurant abcde');
+          expect(restaurantElements.item(2).showedName).toEqual('ini juga boleh restaurant a');
 
           done();
         });
@@ -113,11 +113,11 @@ describe('Searching restaurants', () => {
       searchRestaurants('restaurant a');
     });
 
-    it('should show - when the restaurant returned does not contain a title', (done) => {
+    it('should show - when the restaurant returned does not contain a name', (done) => {
       document.getElementById('restaurants')
         .addEventListener('restaurants:updated', () => {
           const restaurantElements = document.querySelectorAll('.restaurant-item');
-          expect(restaurantElements.item(0).showedTitle)
+          expect(restaurantElements.item(0).showedName)
             .toEqual('-');
 
           done();
