@@ -19,7 +19,11 @@ const RestaurantList = {
           <button id="cta-button"><span>Let's Start</span> <img src="svg/right-arrow.svg"
               alt="Right arrow"></button>
         </div>
-        <img src="images/heros/hero-image_4.jpg" alt="Hero image">
+        <picture class="lazyload">
+          <source srcset="images/heros/hero-image_4.webp" type="image/webp">
+          <source srcset="images/heros/hero-image_4.jpg" type="image/jpg">
+          <img src="images/heros/hero-image_4.jpg" alt="Hero image">
+        </picture>
         <div class="end">
           <p><i>Your journey to extraordinary dining experiences starts here.</i></p>
         </div>
@@ -73,7 +77,11 @@ const RestaurantList = {
             culinary horizons.</p>
         </li>
       </ol>
-      <img src="images/heros/hero-image_2.jpg" alt="Side image">
+      <picture class="lazyload">
+        <source srcset="images/heros/hero-image_2.webp" type="image/webp">
+        <source srcset="images/heros/hero-image_2.jpg" type="image/jpg">
+        <img src="images/heros/hero-image_2.jpg" alt="Side image">
+      </picture>
     </article>
     `;
   },
