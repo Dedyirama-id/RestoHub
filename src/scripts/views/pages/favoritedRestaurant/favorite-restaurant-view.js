@@ -12,6 +12,9 @@ class FavoriteRestaurantView {
           </button>
         </form>
         <div id="restaurants" class="card-container">
+          <card-hover class="restaurant-item"></card-hover>
+          <card-hover class="restaurant-item"></card-hover>
+          <card-hover class="restaurant-item"></card-hover>
         </div>
       </div>
     `;
@@ -26,7 +29,7 @@ class FavoriteRestaurantView {
   showFavoriteRestaurants(restaurants) {
     document.querySelector('#restaurants').innerHTML = '';
     if (restaurants.length) {
-      RestaurantsInitiator.init(document.querySelector('#restaurants'), restaurants);
+      RestaurantsInitiator.createRestaurants(document.querySelector('#restaurants'), restaurants);
     } else {
       document.querySelector('#restaurants').innerHTML = this._getEmptyRestaurantTemplate();
     }

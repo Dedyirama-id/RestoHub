@@ -31,7 +31,50 @@ class CardHover extends HTMLElement {
   }
 
   render() {
-    this._shadowRoot.innerHTML = `
+    this._shadowRoot.innerHTML = this._getStyleTemplate();
+
+    if (this._name) {
+      this._renderRestaurant();
+    } else {
+      this._renderSkeleton();
+    }
+  }
+
+  _renderSkeleton() {
+    this._shadowRoot.innerHTML += `
+      <div class="card">
+        <div class="skeleton main-img"></div>
+        <div class="text-content">
+          <h2 class="skeleton">Lorem Ipsum</h2>
+          <p class="skeleton">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed nulla ratione consequuntur quas porro odit vero illo aspernatur impedit natus.</p>
+        </div>
+        <ul class="tag-container">
+          <li class="skeleton-tag skeleton ">lorem</li>
+          <li class="skeleton-tag skeleton">lorem</li>
+        </ul>
+
+      </div>
+    `;
+  }
+
+  _renderRestaurant() {
+    this._shadowRoot.innerHTML += `
+      <div id="${this._id}" tabindex="0" aria-label="${this._name || '-'}}" class="card">
+        <img loading="lazy" width="100%" src="${API_ENDPOINT.IMAGE.SMALL(this._pictureId)}" alt="${this._name || '-'} image" class="main-img">
+        <div class="text-content">
+          <h2 class="restaurant-item__name name">${this._name || '-'}</h2>
+          <p class="desc">${this._description}</p>
+        </div>
+        <ul class="tag-container">
+          <li class="tag">${this._city}</li>
+          <li class="tag"><img src="svg/star.svg" alt="Star icon" class="star"> ${this._rating}</li>
+        </ul>
+      </div>
+    `;
+  }
+
+  _getStyleTemplate() {
+    return `
       <style>
         :host {
           width: 100%;
@@ -56,6 +99,28 @@ class CardHover extends HTMLElement {
           border: solid transparent 2px;
         }
 
+        @keyframes pulse {
+          0% { opacity: 0.5; }
+          100% { opacity: 1; }
+        }
+
+        .skeleton {
+          background-color: #f0f0f0;
+          animation: pulse 1s ease-in-out infinite alternate;
+          -webkit-animation: pulse 1s ease-in-out infinite alternate;
+          border-radius: 2px;
+          color: transparent;
+          user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -o-user-select: none;
+        }
+
+        .skeleton-tag {
+          border: 1px #f0f0f0 solid;
+        }
+
         .main-img {
           width: 100%;
           object-fit: cover;
@@ -63,6 +128,7 @@ class CardHover extends HTMLElement {
           border-radius: 1rem;
           aspect-ratio: 5/3;
           box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.15), 0px 2px 2px 0px rgba(0, 0, 0, 0.13), 0px 4px 2px 0px rgba(0, 0, 0, 0.08), 0px 7px 3px 0px rgba(0, 0, 0, 0.02), 0px 10px 3px 0px rgba(0, 0, 0, 0.00);
+          background-color: #f0f0f0;
         }
 
         .text-content {
@@ -140,18 +206,6 @@ class CardHover extends HTMLElement {
           }
         }
       </style>
-
-      <div id="${this._id}" tabindex="0" aria-label="${this._name || '-'}}" class="card">
-        <img src="${API_ENDPOINT.IMAGE.SMALL(this._pictureId)}" alt="${this._name || '-'} image" class="main-img">
-        <div class="text-content">
-          <h2 class="restaurant-item__name name">${this._name || '-'}</h2>
-          <p class="desc">${this._description}</p>
-        </div>
-        <ul class="tag-container">
-          <li class="tag">${this._city}</li>
-          <li class="tag"><img src="svg/star.svg" alt="Star icon" class="star"> ${this._rating}</li>
-        </ul>
-      </div>
     `;
   }
 }

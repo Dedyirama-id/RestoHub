@@ -19,10 +19,10 @@ const RestaurantList = {
           <button id="cta-button"><span>Let's Start</span> <img src="svg/right-arrow.svg"
               alt="Right arrow"></button>
         </div>
-        <picture class="lazyload">
-          <source srcset="images/heros/hero-image_4.webp" type="image/webp">
-          <source srcset="images/heros/hero-image_4.jpg" type="image/jpg">
-          <img src="images/heros/hero-image_4.jpg" alt="Hero image">
+        <picture>
+          <source  media="(max-width: 400px)"  srcset="images/small/main-hero-small.jpg" type="image/jpg">
+          <source  media="(max-width: 720px)"  srcset="images/large/main-hero-large.jpg" type="image/jpg">
+          <img src="images/base/main-hero.jpg" alt="Hero image">
         </picture>
         <div class="end">
           <p><i>Your journey to extraordinary dining experiences starts here.</i></p>
@@ -77,10 +77,9 @@ const RestaurantList = {
             culinary horizons.</p>
         </li>
       </ol>
-      <picture class="lazyload">
-        <source srcset="images/heros/hero-image_2.webp" type="image/webp">
-        <source srcset="images/heros/hero-image_2.jpg" type="image/jpg">
-        <img src="images/heros/hero-image_2.jpg" alt="Side image">
+      <picture>
+        <source  media="(max-width: 600px)"  srcset="images/small/side-image-small.jpg" type="image/jpg">
+        <img src="images/large/side-image-large.jpg" alt="Side image">
       </picture>
     </article>
     `;
@@ -90,13 +89,14 @@ const RestaurantList = {
     const ctaButton = document.querySelector('#cta-button');
     ctaButton.addEventListener('click', (event) => this._handleCtaClick(event));
     const loaderStatus = document.querySelector('loader-status');
+    const restaurantsContainer = document.querySelector('#card-container');
+
+    RestaurantsInitiator.init(restaurantsContainer, 10);
 
     try {
-      loaderStatus.renderLoad();
       const restaurants = await RestaurantApiSource.restaurantList();
-      const restaurantsContainer = document.querySelector('#card-container');
       restaurantsContainer.innerHTML = '';
-      RestaurantsInitiator.init(restaurantsContainer, restaurants);
+      RestaurantsInitiator.createRestaurants(restaurantsContainer, restaurants);
     } catch (error) {
       loaderStatus.error = error;
     }
