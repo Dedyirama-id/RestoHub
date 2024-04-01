@@ -33,7 +33,7 @@ class CardHover extends HTMLElement {
   render() {
     this._shadowRoot.innerHTML = this._getStyleTemplate();
 
-    if (this._name) {
+    if (this._id) {
       this._renderRestaurant();
     } else {
       this._renderSkeleton();

@@ -12,9 +12,9 @@ class FavoriteRestaurantView {
           </button>
         </form>
         <div id="restaurants" class="card-container">
-          <card-hover class="restaurant-item"></card-hover>
-          <card-hover class="restaurant-item"></card-hover>
-          <card-hover class="restaurant-item"></card-hover>
+          <card-hover></card-hover>
+          <card-hover></card-hover>
+          <card-hover></card-hover>
         </div>
       </div>
     `;

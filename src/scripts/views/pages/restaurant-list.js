@@ -22,7 +22,7 @@ const RestaurantList = {
         <picture>
           <source  media="(max-width: 400px)"  srcset="images/small/main-hero-small.jpg" type="image/jpg">
           <source  media="(max-width: 720px)"  srcset="images/large/main-hero-large.jpg" type="image/jpg">
-          <img src="images/base/main-hero.jpg" alt="Hero image">
+          <img fetchpriority="high" src="images/base/main-hero.jpg" alt="Hero image">
         </picture>
         <div class="end">
           <p><i>Your journey to extraordinary dining experiences starts here.</i></p>
