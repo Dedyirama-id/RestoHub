@@ -92,6 +92,13 @@ module.exports = {
           },
         },
         {
+          urlPattern: ({ url }) => url.href.startsWith('https://fonts.googleapis.com/'),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'google-font-api',
+          },
+        },
+        {
           urlPattern: /\.(?:png|jpg|jpeg|svg|webp|ico|ttf)$/,
           handler: 'CacheFirst',
           options: {
