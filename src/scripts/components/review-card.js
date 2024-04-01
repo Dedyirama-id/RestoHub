@@ -49,8 +49,8 @@ class ReviewCard extends HTMLElement {
           ${createAvatarWithSeed(this._name)}
         </div>
         <div class="review-content">
-          <h2>${this._name}</h2>
-          <p class="review">${this._review}</p>
+          <h2 class="review-card__name">${this._name}</h2>
+          <p class="review review-card__review">${this._review}</p>
           <p class="date">${this._date}</p>
         </div>
       </div>
