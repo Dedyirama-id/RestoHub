@@ -183,7 +183,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 64px;
-  margin: 8px 24px;
+  padding: 8px 24px;
+  width: 100%;
   max-width: 1280px;
   min-height: 100vh;
   flex-grow: 1;
@@ -285,6 +286,7 @@ main {
 
 #favorite-restaurant-list {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 16px;
 
