@@ -114,11 +114,11 @@ describe('Searching restaurants', () => {
     });
 
     it('should show - when the restaurant returned does not contain a name', (done) => {
-      document.getElementById('restaurants')
+      document
+        .getElementById('restaurants')
         .addEventListener('restaurants:updated', () => {
           const restaurantElements = document.querySelectorAll('.restaurant-item');
-          expect(restaurantElements.item(0).showedName)
-            .toEqual('-');
+          expect(restaurantElements.item(0).showedName).toEqual('-');
 
           done();
         });

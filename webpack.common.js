@@ -3,10 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
-const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -22,18 +22,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
+          MiniCssExtractPlugin.loader,
+          'css-loader',
         ],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
         ],
@@ -48,7 +44,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/templates/index.html'),
@@ -83,23 +81,11 @@ module.exports = {
     new ImageminWebpackPlugin({
       plugins: [
         ImageminMozjpeg({
-          quality: 50,
+          quality: 70,
           progressive: true,
         }),
       ],
     }),
-    new ImageminWebpWebpackPlugin({
-      config: [
-        {
-          test: /\.(jpe?g|png)/,
-          options: {
-            quality: 50,
-          },
-        },
-      ],
-      overrideExtension: true,
-    }),
-    new BundleAnalyzerPlugin(),
   ],
   optimization: {
     splitChunks: {
@@ -123,5 +109,7 @@ module.exports = {
         },
       },
     },
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
 };

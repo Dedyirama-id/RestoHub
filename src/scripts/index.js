@@ -4,11 +4,13 @@ import './components/card-hover';
 import './components/review-card';
 import './components/add-to-favorite-btn';
 import './components/loader-status';
+import { initializeApp } from 'firebase/app';
 import App from './views/app';
 import swRegister from './utils/sw-register';
+import firebaseConfig from './routes/firebase-config';
 
-import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+// eslint-disable-next-line no-unused-vars
+const fbApp = initializeApp(firebaseConfig);
 
 const app = new App({
   button: document.querySelector('#menu-btn'),

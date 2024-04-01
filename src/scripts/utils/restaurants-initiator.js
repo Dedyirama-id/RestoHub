@@ -1,5 +1,12 @@
 const RestaurantsInitiator = {
-  init(restaurantsContainer, restaurants) {
+  init(restaurantsContainer, restaurantCount) {
+    for (let count = 0; count < restaurantCount; count++) {
+      const restaurantSkeleton = document.createElement('card-hover');
+      restaurantsContainer.appendChild(restaurantSkeleton);
+    }
+  },
+
+  createRestaurants(restaurantsContainer, restaurants) {
     restaurants.forEach((restaurant) => {
       const card = document.createElement('card-hover');
       card.classList.add('restaurant-item');

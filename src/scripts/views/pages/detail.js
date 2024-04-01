@@ -1,25 +1,45 @@
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import RestaurantApiSource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
-import { createRestaurantDetailTemplate } from '../templates/template-creator';
+import { RestaurantDetailTemplate } from '../templates/template-creator';
 
 const Detail = {
   async render() {
     return `
+    <loader-status></loader-status>
     <div class="detail">
-      <loader-status></loader-status>
     </div>
     <div id="menu" class="menu">
       <h2>Menu List</h2>
       <div>
         <h3>🥘 Foods</h3>
         <ul id="food-list">
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
         </ul>
       </div>
       <hr>
       <div>
         <h3>🍸 Drinks</h3>
         <ul id="drinks-list">
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
+          <li class="skeleton">Lorem ipsum dolor.</li>
         </ul>
       </div>
     </div>
@@ -41,6 +61,9 @@ const Detail = {
         </form>
       </div>
       <div class="review-container"> 
+        <review-card></review-card>
+        <review-card></review-card>
+        <review-card></review-card>
       </div>
     </div>
     `;
@@ -52,13 +75,13 @@ const Detail = {
       behavior: 'smooth',
     });
 
+    const detailContainer = document.querySelector('.detail');
+    detailContainer.innerHTML = RestaurantDetailTemplate.createSkeleton();
     const loaderStatus = document.querySelector('loader-status');
     const restaurantId = UrlParser.parseActiveUrlWithoutCombiner().id;
     try {
-      loaderStatus.renderLoad();
       const restaurant = await RestaurantApiSource.detailRestaurant(restaurantId);
-      const detailContainer = document.querySelector('.detail');
-      detailContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+      detailContainer.innerHTML = RestaurantDetailTemplate.createRestaurantDetail(restaurant);
 
       this._renderMenus(restaurant.menus);
       this._renderReviews(restaurant.customerReviews);

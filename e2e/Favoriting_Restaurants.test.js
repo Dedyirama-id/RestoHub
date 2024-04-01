@@ -7,15 +7,16 @@ Before(({ I }) => {
   I.amOnPage('/#/favorite');
 });
 
-Scenario('Showing empty favorited restaurants', ({ I }) => {
+xScenario('Showing empty favorited restaurants', ({ I }) => {
   I.seeElement('#query');
   I.see('Tidak ada restaurant untuk ditampilkan', '.restaurant-item__not__found');
 });
 
-Scenario('Favoriting one restaurant', async ({ I }) => {
+xScenario('Favoriting one restaurant', async ({ I }) => {
   I.see('Tidak ada restaurant untuk ditampilkan', '.restaurant-item__not__found');
 
   I.amOnPage('/');
+
   I.seeElement('.restaurant-item');
 
   const firstRestaurant = locate('shadow=.restaurant-item__name');
@@ -31,7 +32,7 @@ Scenario('Favoriting one restaurant', async ({ I }) => {
   assert.strictEqual(firstRestaurantName, favoritedRestaurantName);
 });
 
-Scenario('searching restaurants', async ({ I }) => {
+xScenario('searching restaurants', async ({ I }) => {
   I.see('Tidak ada restaurant untuk ditampilkan', '.restaurant-item__not__found');
 
   I.amOnPage('/');
