@@ -20,7 +20,9 @@ const RestaurantList = {
               alt="Right arrow"></button>
         </div>
         <picture>
+          <source  media="(max-width: 400px)"  srcset="images/small/main-hero-small.webp" type="image/webp">
           <source  media="(max-width: 400px)"  srcset="images/small/main-hero-small.jpg" type="image/jpg">
+          <source  media="(max-width: 720px)"  srcset="images/large/main-hero-large.webp" type="image/webp">
           <source  media="(max-width: 720px)"  srcset="images/large/main-hero-large.jpg" type="image/jpg">
           <img fetchpriority="high" src="images/base/main-hero.jpg" alt="Hero image">
         </picture>
@@ -78,6 +80,7 @@ const RestaurantList = {
         </li>
       </ol>
       <picture>
+        <source  media="(max-width: 600px)"  srcset="images/small/side-image-small.webp" type="image/webp">
         <source  media="(max-width: 600px)"  srcset="images/small/side-image-small.jpg" type="image/jpg">
         <img src="images/large/side-image-large.jpg" alt="Side image">
       </picture>

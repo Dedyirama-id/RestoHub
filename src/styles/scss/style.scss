@@ -126,8 +126,8 @@ header {
     cursor: pointer;
     border: none;
     background-color: transparent;
-    min-height: 44px;
-    min-width: 44px;
+    height: 44px;
+    width: 44px;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -844,11 +844,11 @@ footer {
   }
 
   .copyright {
-    color: transparentize($color: $color-base, $amount: 0.6);
+    color: transparentize($color: $color-base, $amount: 0.3);
     width: 100%;
     justify-self: center;
     text-align: center;
-    border-top: solid transparentize($color: $color-base, $amount: 0.6) 2px;
+    border-top: solid transparentize($color: $color-base, $amount: 0.3) 2px;
     padding-top: 4px;
     max-width: 1280px;
 
