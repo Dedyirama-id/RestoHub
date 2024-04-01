@@ -58,6 +58,7 @@
   "dependencies": {
     "@dicebear/core": "^8.0.0",
     "@dicebear/notionists": "^8.0.0",
+    "firebase": "^10.10.0",
     "idb": "^8.0.0",
     "lazysizes": "^5.3.2",
     "query-selector-shadow-dom": "^1.0.1",
