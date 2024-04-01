@@ -16,7 +16,7 @@ Scenario('Favoriting one restaurant', async ({ I }) => {
   I.see('Tidak ada restaurant untuk ditampilkan', '.restaurant-item__not__found');
 
   I.amOnPage('/');
-
+  I.waitForElement('.restaurant-item');
   I.seeElement('.restaurant-item');
 
   const firstRestaurant = locate('.restaurant-item__name');
@@ -74,7 +74,7 @@ Scenario('Favoriting one restaurant then remove it from favorite', async ({ I })
   I.see('Tidak ada restaurant untuk ditampilkan', '.restaurant-item__not__found');
 
   I.amOnPage('/');
-
+  I.waitForElement('.restaurant-item');
   I.seeElement('.restaurant-item');
 
   const firstRestaurant = locate('.restaurant-item__name');

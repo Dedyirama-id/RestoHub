@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -54,6 +55,18 @@ module.exports = {
         },
       ],
     }),
+    new ImageminWebpWebpackPlugin({
+      config: [
+        {
+          test: /\.(jpe?g|png)/,
+          options: {
+            quality: 70,
+          },
+        },
+      ],
+      overrideExtension: true,
+    }),
+
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: './sw.bundle.js',
       runtimeCaching: [
@@ -69,6 +82,24 @@ module.exports = {
           handler: 'StaleWhileRevalidate',
           options: {
             cacheName: 'restaurant-image-api',
+          },
+        },
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://api.dicebear.com/8.x/'),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'avatar-dicebear-api-8.x',
+          },
+        },
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|webp|ico|ttf)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'static-asset',
+            expiration: {
+              maxEntries: 20,
+              maxAgeSeconds: 60 * 60 * 24,
+            },
           },
         },
       ],

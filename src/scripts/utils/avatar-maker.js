@@ -1,14 +1,4 @@
-import * as notionists from '@dicebear/notionists';
+import API_ENDPOINT from '../globals/api-endpoint';
 
-const { createAvatar } = await import('@dicebear/core');
-
-const createAvatarWithSeed = (seed) => {
-  const avatar = createAvatar(notionists, {
-    seed,
-    radius: 50,
-  });
-
-  return avatar.toString();
-};
-
+const createAvatarWithSeed = (seed) => `<img loading="lazy" src="${API_ENDPOINT.AVATAR(seed)}" alt="${seed} profile"/>`;
 export default createAvatarWithSeed;
