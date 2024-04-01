@@ -21,10 +21,10 @@ const RestaurantList = {
         </div>
         <picture>
           <source  media="(max-width: 400px)"  srcset="images/small/main-hero-small.webp" type="image/webp">
-          <source  media="(max-width: 400px)"  srcset="images/small/main-hero-small.jpg" type="image/jpg">
           <source  media="(max-width: 720px)"  srcset="images/large/main-hero-large.webp" type="image/webp">
-          <source  media="(max-width: 720px)"  srcset="images/large/main-hero-large.jpg" type="image/jpg">
-          <img fetchpriority="high" src="images/base/main-hero.jpg" alt="Hero image">
+          <source  media="(max-width: 400px)"  srcset="images/small/main-hero-small.jpg" type="image/jpeg">
+          <source  media="(max-width: 720px)"  srcset="images/large/main-hero-large.jpg" type="image/jpeg">
+          <img src="images/base/main-hero.jpg" alt="Hero image">
         </picture>
         <div class="end">
           <p><i>Your journey to extraordinary dining experiences starts here.</i></p>
@@ -81,7 +81,7 @@ const RestaurantList = {
       </ol>
       <picture>
         <source  media="(max-width: 600px)"  srcset="images/small/side-image-small.webp" type="image/webp">
-        <source  media="(max-width: 600px)"  srcset="images/small/side-image-small.jpg" type="image/jpg">
+        <source  media="(max-width: 600px)"  srcset="images/small/side-image-small.jpg" type="image/jpeg">
         <img src="images/large/side-image-large.jpg" alt="Side image">
       </picture>
     </article>

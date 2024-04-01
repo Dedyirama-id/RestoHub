@@ -10,6 +10,7 @@ const API_ENDPOINT = {
     MEDIUM: (id) => `${CONFIG.BASE_IMAGE_URL}/medium/${id}`,
     LARGE: (id) => `${CONFIG.BASE_IMAGE_URL}/large/${id}`,
   },
+  AVATAR: (seed) => `${CONFIG.BASE_AVATAR_URL}/notionists/svg?seed=${seed}`,
 };
 
 export default API_ENDPOINT;

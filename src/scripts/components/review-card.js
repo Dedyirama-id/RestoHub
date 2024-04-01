@@ -122,6 +122,7 @@ class ReviewCard extends HTMLElement {
           flex-shrink: 0;
           min-width: 64px;
           min-height: 64px;
+          overflow: hidden;
         }
 
         .review-content {
